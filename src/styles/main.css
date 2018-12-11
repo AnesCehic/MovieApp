@@ -1,0 +1,11 @@
+.mainPage {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.mainPage .link {
+	background-color: #eee;
+	padding: 10px;
+	text-decoration: none;
+	color: black;
+}
