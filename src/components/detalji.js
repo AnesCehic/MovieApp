@@ -45,6 +45,9 @@ class Detalji extends React.Component{
                 }
                 <h1>{this.state.info.title}</h1>
                 <p>{this.state.info.overview}</p>
+                <p>Vote average: {this.state.info.vote_average}</p>
+                <p>Runtime: {this.state.info.runtime}</p>
+                <p>Popularity: {this.state.info.popularity}</p>
             </div>
         );
     }

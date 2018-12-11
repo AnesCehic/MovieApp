@@ -1,4 +1,5 @@
 import { instance } from '../axios';
+import { apiKey } from '../apiKey';
 
 import {
     SAVE_MOVIES,
@@ -58,7 +59,7 @@ export const searchText = (text) => {
 
 export const fetchMovies = () => dispatch => {
 	dispatch(startFetching());
-    instance.get("movie/top_rated?api_key=3411d7f956e8d250799ea7493036ff03&language=en-US&page=1")
+    instance.get(`movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
 		.then(res => {
 			let data = res.data.results.slice(0, 10)
 			dispatch(saveMovies(data));
@@ -71,7 +72,7 @@ export const fetchMovies = () => dispatch => {
 
 export const fetchTvShows = () => dispatch => {
 	dispatch(startFetching());
-	instance.get("tv/top_rated?api_key=3411d7f956e8d250799ea7493036ff03&language=en-US&page=1")
+	instance.get(`tv/top_rated?api_key=${apiKey}&language=en-US&page=1`)
 		.then(res => {
 			let data = res.data.results.slice(0, 10);
 			dispatch(saveTvShows(data));
@@ -84,10 +85,10 @@ export const fetchTvShows = () => dispatch => {
 
 export const searchMovies = (text) => dispatch => {
 	dispatch(startFetching());
-	instance.get(`search/movie?api_key=3411d7f956e8d250799ea7493036ff03&language=en-US&query=${text}&page=1&include_adult=false`)
+	instance.get(`search/movie?api_key=${apiKey}&language=en-US&query=${text}&page=1&include_adult=false`)
 		.then(res => {
 			console.log(res);
-			let data = res.data.results.slice(0, 3);
+			let data = res.data.results;
 			dispatch(searchMovieText(data));
 			dispatch(endFetching());
 		})
@@ -98,10 +99,10 @@ export const searchMovies = (text) => dispatch => {
 
 export const searchTvShows = (text) => dispatch => {
 	dispatch(startFetching());
-	instance.get(`search/tv?api_key=3411d7f956e8d250799ea7493036ff03&language=en-US&query=${text}&page=1`)
+	instance.get(`search/tv?api_key=${apiKey}&language=en-US&query=${text}&page=1`)
 		.then(res => {
 			console.log(res);
-			let data = res.data.results.slice(0, 3);
+			let data = res.data.results;
 			dispatch(searchTvShowText(data));
 			dispatch(endFetching());
 		})
